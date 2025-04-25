@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Browser Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffe6f0;
+      padding: 20px;
+      transition: background-color 0.3s ease;
+    }
+    header, section {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 2px solid #d48fb4;
+      border-radius: 10px;
+      background-color: #fff0f5;
+    }
+    h2 {
+      color: #cc6699;
+    }
+    button {
+      padding: 5px 10px;
+      margin: 5px;
+      background-color: #ffb6c1;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ff99bb;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Profile Information Header -->
+  <header>
+    <h2>Student Profile</h2>
+    <p><strong>Complete Name:</strong> Sophia Bianca D. Boy</p>
+    <p><strong>Sex:</strong> Female</p>
+    <p><strong>Address:</strong> Danlog, San Jose, Camarines Sur</p>
+    <p><strong>Course, Year, and Section:</strong> BSIT -2A</p>
+    <p><strong>Name of School:</strong> Partido State University</p>
+    <p><strong>Semester and Academic Year:</strong> 2nd Semester - A/Y 2024-2025</p>
+    <p><strong>Subject Code and Title:</strong> PF2 - Event-Driven Programming</p>
+    <p><strong>Subject Instructor:</strong> Mr. Arjay Abio</p>
+  </header>
+
+  <!-- Part A: Browser Info -->
+  <section>
+    <h2>Browser Information</h2>
+    <p id="browserName"></p>
+    <p id="platform"></p>
+    <p id="javaEnabled"></p>
+    <p id="screenResolution"></p>
+    <p id="availableScreenSize"></p>
+    <p id="colorDepth"></p>
+  </section>
+
+  <!-- Part B: Page Info -->
+  <section>
+    <h2>Page Information</h2>
+    <p id="url"></p>
+    <p id="hostname"></p>
+    <p id="pageTitle"></p>
+    <button onclick="changeTitle()">Change Page Title</button>
+  </section>
+
+  <!-- Part C: Navigation Controls -->
+  <section>
+    <h2>Navigation Controls</h2>
+    <button onclick="location.reload()">Reload Page</button>
+    <button onclick="location.href='https://www.example.com'">Go to Example.com</button>
+    <button onclick="history.back()">Go Back</button>
+    <button onclick="history.forward()">Go Forward</button>
+  </section>
+
+  <script>
+    // Part A: Display browser and screen info
+    document.getElementById("browserName").textContent = "Browser: " + navigator.userAgent;
+    document.getElementById("platform").textContent = "Platform: " + navigator.platform;
+    document.getElementById("javaEnabled").textContent = "Java Enabled: " + navigator.javaEnabled();
+    document.getElementById("screenResolution").textContent = "Screen Resolution: " + screen.width + "x" + screen.height;
+    document.getElementById("availableScreenSize").textContent = "Available Screen Size: " + screen.availWidth + "x" + screen.availHeight;
+    document.getElementById("colorDepth").textContent = "Color Depth: " + screen.colorDepth + " bits";
+
+    // Part B: Display location info
+    document.getElementById("url").textContent = "Current URL: " + window.location.href;
+    document.getElementById("hostname").textContent = "Hostname: " + window.location.hostname;
+    document.getElementById("pageTitle").textContent = "Page Title: " + document.title;
+
+    function changeTitle() {
+      const newTitle = prompt("Enter a new page title:");
+      if (newTitle) {
+        document.title = newTitle;
+        document.getElementById("pageTitle").textContent = "Page Title: " + newTitle;
+      }
+    }
+
+    // Part D: Dynamic Background Color
+    function updateBackground() {
+      const width = window.innerWidth;
+      if (width < 600) {
+        document.body.style.backgroundColor = "#add8e6"; // Blue for Mobile
+      } else if (width >= 600 && width <= 991) {
+        document.body.style.backgroundColor = "#90ee90"; // Green for Tablet
+      } else {
+        document.body.style.backgroundColor = "#ffe6f0"; // Keep original pink for Desktop
+      }
+    }
+
+    // Apply background color on load and resize
+    window.addEventListener("load", updateBackground);
+    window.addEventListener("resize", updateBackground);
+  </script>
+</body>
+</html>
