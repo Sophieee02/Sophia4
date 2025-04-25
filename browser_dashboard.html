@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,7 +35,6 @@
 </head>
 <body>
 
-  <!-- Profile Information Header -->
   <header>
     <h2>Student Profile</h2>
     <p><strong>Complete Name:</strong> Sophia Bianca D. Boy</p>
@@ -49,7 +47,6 @@
     <p><strong>Subject Instructor:</strong> Mr. Arjay Abio</p>
   </header>
 
-  <!-- Part A: Browser Info -->
   <section>
     <h2>Browser Information</h2>
     <p id="browserName"></p>
@@ -60,7 +57,6 @@
     <p id="colorDepth"></p>
   </section>
 
-  <!-- Part B: Page Info -->
   <section>
     <h2>Page Information</h2>
     <p id="url"></p>
@@ -69,17 +65,15 @@
     <button onclick="changeTitle()">Change Page Title</button>
   </section>
 
-  <!-- Part C: Navigation Controls -->
   <section>
     <h2>Navigation Controls</h2>
     <button onclick="location.reload()">Reload Page</button>
-    <button onclick="location.href='https://www.facebook.com/'">Go to Example.com</button>
+    <button onclick="goToFacebook()">Go to Facebook</button>
     <button onclick="history.back()">Go Back</button>
     <button onclick="history.forward()">Go Forward</button>
   </section>
 
   <script>
-    // Part A: Display browser and screen info
     document.getElementById("browserName").textContent = "Browser: " + navigator.userAgent;
     document.getElementById("platform").textContent = "Platform: " + navigator.platform;
     document.getElementById("javaEnabled").textContent = "Java Enabled: " + navigator.javaEnabled();
@@ -87,7 +81,6 @@
     document.getElementById("availableScreenSize").textContent = "Available Screen Size: " + screen.availWidth + "x" + screen.availHeight;
     document.getElementById("colorDepth").textContent = "Color Depth: " + screen.colorDepth + " bits";
 
-    // Part B: Display location info
     document.getElementById("url").textContent = "Current URL: " + window.location.href;
     document.getElementById("hostname").textContent = "Hostname: " + window.location.hostname;
     document.getElementById("pageTitle").textContent = "Page Title: " + document.title;
@@ -100,19 +93,21 @@
       }
     }
 
-    // Part D: Dynamic Background Color
+    function goToFacebook() {
+      window.location.href = "https://www.facebook.com";
+    }
+
     function updateBackground() {
       const width = window.innerWidth;
       if (width < 600) {
-        document.body.style.backgroundColor = "#add8e6"; // Blue for Mobile
+        document.body.style.backgroundColor = "#add8e6";
       } else if (width >= 600 && width <= 991) {
-        document.body.style.backgroundColor = "#90ee90"; // Green for Tablet
+        document.body.style.backgroundColor = "#90ee90";
       } else {
-        document.body.style.backgroundColor = "#ffe6f0"; // Keep original pink for Desktop
+        document.body.style.backgroundColor = "#ffe6f0";
       }
     }
 
-    // Apply background color on load and resize
     window.addEventListener("load", updateBackground);
     window.addEventListener("resize", updateBackground);
   </script>
